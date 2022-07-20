@@ -12,7 +12,7 @@ import { ChevronRight } from '@mui/icons-material'
 import Calendar from '../../pages/Calendar/Calendar'
 import Scheduler from '../../pages/Scheduler/Scheduler'
 
-const SideBar = ({ open, handleSideBarOpen, handleSideBarClose }) => {
+const SideBar = ({ open, handleSideBarOpen, handleSideBarClose, user }) => {
   //* State *//
   const [date, setDate] = useState(moment())
   
@@ -39,7 +39,7 @@ const SideBar = ({ open, handleSideBarOpen, handleSideBarClose }) => {
           <div>{currentYear()}</div>
         </header>
         <Calendar date={date} setDate={setDate} />
-        <Scheduler date={date} />
+        <Scheduler date={date} user={user} />
       </aside>
     </>
   )

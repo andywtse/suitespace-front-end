@@ -1,16 +1,10 @@
 //* React Hooks *//
 import { useState, useRef, useEffect } from 'react'
 
-const EditScheduleEvent = ({ date, handleUpdateEvent }) => {
+const EditScheduleEvent = ({ date, handleUpdateEvent, event }) => {
   //* State *//
   const [validForm, setValidForm] = useState(false)
-  const [formData, setFormData] = useState({
-    category: '', 
-    description: '', 
-    location: '', 
-    date: '',  
-    time: '', 
-  })
+  const [formData, setFormData] = useState(event)
 
   //* useRef *//
   const formElement = useRef()
@@ -25,7 +19,6 @@ const EditScheduleEvent = ({ date, handleUpdateEvent }) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
     
-
   const handleSubmit = evt => {
 		evt.preventDefault()
     handleUpdateEvent(formData)

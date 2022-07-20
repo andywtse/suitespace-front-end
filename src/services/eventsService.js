@@ -25,8 +25,24 @@ async function update(event) {
 	return await res.json()
 }
 
+async function deleteEvent(id) {
+  const res = await fetch(`${SERVER_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+	return await res.json()
+}
+
 async function getAll() {
-  const res = await fetch(SERVER_URL)
+  const res = await fetch(`${SERVER_URL}/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
   return await res.json()
 }
 
@@ -34,4 +50,5 @@ export {
 	create,
   update,
   getAll,
+  deleteEvent,
 }

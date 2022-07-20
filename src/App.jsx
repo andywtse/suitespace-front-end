@@ -53,7 +53,8 @@ const App = () => {
       <SideBar
         open={open}
         handleSideBarOpen={handleSideBarOpen}
-        handleSideBarClose={handleSideBarClose} 
+        handleSideBarClose={handleSideBarClose}
+        user={user} 
       />
       <div 
         className='app-toggle-sidebar | fixed right-0 top-0 flex justify-center items-center group' 
