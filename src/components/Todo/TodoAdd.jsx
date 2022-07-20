@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 
-const TodoModal = (handleAddTodo) => {
+const TodoModal = (props) => {
   const [formData, setFormData] = useState({ // reMOVED THIS from MODAL
     title: '',
     description: '',
@@ -18,7 +18,7 @@ const TodoModal = (handleAddTodo) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    handleAddTodo(formData)
+    props.handleAddTodo(formData)
   }
 
 	return (
@@ -39,7 +39,7 @@ const TodoModal = (handleAddTodo) => {
           <input className='input-item'
             name='title'
             type='text'
-            value='{formData.title}'
+            value={formData.title}
             required
             onChange={handleChange}
           />
@@ -57,7 +57,7 @@ const TodoModal = (handleAddTodo) => {
         <div className='btn-submit'>
           <button
             type='submit'
-            hidden={!validForm}
+            disabled={!validForm}
           >
             Add Todo
           </button>

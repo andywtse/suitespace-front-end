@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { PropaneSharp } from '@mui/icons-material';
 import { Typography, Button, Modal, Box } from '@mui/material'
 import TodoItem from '../../components/Todo/TodoItem';
@@ -8,6 +8,12 @@ import * as todoService from '../../services/todoService'
 import TodoModal from '../../components/Todo/TodoAdd.jsx';
 
 const TodoList = (props) => {
+
+  const [formData, setFormData] = useState({ // reMOVED THIS from MODAL
+    title: '',
+    description: '',
+    dueDate: new Date(),
+  })
   const [todos, setTodos] = useState([])
   
   useEffect(() => {
@@ -28,14 +34,13 @@ const TodoList = (props) => {
     setTodos(todos.filter(todo => todo._id !== deletedTodo._id))
   }
 
-  const handleUpdateTodo = updatedTodoFormData => {
-    console.log(updatedTodoFormData)
-    // // Using map to replace just the todo that was updated
-    // const newTodosArray = todos.map(todo => 
-    //   todo._id === updatedTodoFormData._id ? updatedTodoFormData : todo
-    // )
-    // setTodos(newTodosArray)
-		// // navigate('/') -------------- Navigate back to main page after submission
+  const handleUpdateTodo = async updatedTodoFormData => {
+    const updatedTodo = await todoService.update(updatedTodoFormData)
+    const newTodosArray = todos.map(todo => 
+      todo._id === updatedTodoFormData._id ? updatedTodoFormData : todo
+    )
+    setTodos(newTodosArray)
+		// navigate('/')
   }
 
   const [open, setOpen] = useState(false);
@@ -75,6 +80,7 @@ const TodoList = (props) => {
             <Typography id='modal-modal-description' sx={{ mt: 2 }}>
               <TodoModal
                 handleAddTodo={handleAddTodo}
+                formData={formData}
               />
             </Typography>
           </Box>
@@ -89,8 +95,12 @@ const TodoList = (props) => {
             <TodoItem
               key={todo._id}
               todo={todo}
-              handleDeleteTodo={handleDeleteTodo}
+              open={open}
+              handleOpen={handleOpen}
+              handleClose={handleClose}
               handleUpdateTodo={handleUpdateTodo}
+              handleDeleteTodo={handleDeleteTodo}
+              style={style}
               user={props.user}
               // isList={true}
             />
