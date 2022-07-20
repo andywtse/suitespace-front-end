@@ -91,7 +91,8 @@ const TodoList = (props) => {
       </div>
       <div className='todo-list-body'>
         <>
-          {todos?.map(todo => 
+          {console.log(todos)}
+          {/* {todos?.map(todo => 
             <TodoItem
               key={todo._id}
               todo={todo}
@@ -104,7 +105,7 @@ const TodoList = (props) => {
               user={props.user}
               // isList={true}
             />
-          )}
+          )} */}
         </>
       </div>
     </div>

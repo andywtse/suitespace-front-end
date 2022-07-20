@@ -1,8 +1,8 @@
 import * as tokenService from './tokenService'
 const SERVER_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/profiles`
 
-async function update(user,location) {
-  const res = await fetch(`${SERVER_URL}/${user._id}`, {
+async function updateLocation(user,location) {
+  const res = await fetch(`${SERVER_URL}/${user.profile._id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -24,4 +24,4 @@ async function getLocation() {
   return res.json()
 }
 
-export { getLocation,update }
+export { getLocation,updateLocation }

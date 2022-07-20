@@ -15,7 +15,6 @@ import './weather.css'
 
 const Weather = (props) => {
 
-
   const getLocationDetails = async () => {
     try {
       locationService.getLocation()
@@ -46,9 +45,11 @@ const Weather = (props) => {
     }
     fetchWeatherDetails()
 
-  }, [props.user,searchLocation])
+  }, [searchLocation])
 
-  const handleSearchLocation = (formData) => {
+  const handleSearchLocation = async (formData) => {
+    const updateLocation = await locationService.updateLocation(props.user, formData.query)
+    console.log((updateLocation))
     setSearchLocation(formData.query)
   }
 

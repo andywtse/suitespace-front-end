@@ -4,7 +4,6 @@ import NavBar from './components/NavBar/NavBar'
 
 // Services
 import * as authService from './services/authService'
-import * as locationService from './services/locationService'
 
 // Files 
 import './App.css'
@@ -21,7 +20,6 @@ import { ChevronLeft } from '@mui/icons-material';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-  // const [location, setLocation] = useState(locationService.getLocation())
   const [open, setOpen] = useState(true)
 
   const navigate = useNavigate()

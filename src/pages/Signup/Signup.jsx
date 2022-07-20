@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import * as authService from '../../services/authService'
 
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText } from '@mui/material'
@@ -7,7 +6,6 @@ import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, D
 const Signup = props => {
 
   //Sign Up
-  const navigate = useNavigate()
   const [message, setMessage] = useState([''])
   const [formData, setFormData] = useState({
     name: '',
@@ -41,7 +39,7 @@ const Signup = props => {
     try {
       await authService.signup(formData)
       props.handleSignupOrLogin()
-      navigate('/')
+      window.location.reload();
     } catch (err) {
       updateMessage(err.message)
     }
