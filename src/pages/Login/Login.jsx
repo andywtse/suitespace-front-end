@@ -34,7 +34,6 @@ const Login = props => {
   }
 
   const handleSubmit = async evt => {
-    evt.preventDefault()
     try {
       await authService.login(formData)
       props.handleSignupOrLogin()

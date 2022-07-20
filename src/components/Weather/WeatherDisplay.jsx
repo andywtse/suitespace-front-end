@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import './weather.css'
 
-const WeatherDisplay = ({weather,displayPref}) => {
+const WeatherDisplay = ({weather,weatherDisplay}) => {
 
   useEffect(()=>{
 

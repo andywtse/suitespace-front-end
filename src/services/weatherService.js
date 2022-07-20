@@ -1,16 +1,9 @@
 import * as tokenService from './tokenService'
 const SERVER_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/weather`
 
-function setLocationLocalStorage(location) {
-  localStorage.setItem('location', location)
-}
 
-function getLocationLocalStorage(){
-  return localStorage.getItem('location')
-}
-
-async function getPref() {
-  const res = await fetch(`${SERVER_URL}/preference`, {
+async function getWeatherPref() {
+  const res = await fetch(`${SERVER_URL}/user/preference`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -22,19 +15,11 @@ async function getPref() {
 
 async function getWeatherDetails(location) {
   const res = await fetch(`${SERVER_URL}/${location}`)
-  return res.json()
-}
-
-async function createWeatherPref(location) {
-  const res = await fetch(SERVER_URL, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(location)
-  })
-  return res.json()
+  if(res.status === 200) {
+    return res.json()
+  }else {
+    return ''
+  }
 }
 
 async function updateWeatherPref(location) {
@@ -50,10 +35,7 @@ async function updateWeatherPref(location) {
 }
 
 export { 
-  getPref, 
+  getWeatherPref, 
   getWeatherDetails,
-  setLocationLocalStorage, 
-  getLocationLocalStorage,
-  createWeatherPref,
   updateWeatherPref 
 }

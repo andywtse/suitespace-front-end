@@ -14,6 +14,7 @@ const Signup = props => {
     email: '',
     password: '',
     passwordConf: '',
+    locaiton: '',
   })
 
   // MUI
@@ -25,6 +26,7 @@ const Signup = props => {
       email: '',
       password: '',
       passwordConf: '',
+      location: '',
     })
     setOpen(false);
   }
@@ -33,10 +35,9 @@ const Signup = props => {
     setMessage(msg)
   }
 
-  const { name, email, password, passwordConf } = formData
+  const { name, email, password, passwordConf, location } = formData
 
   const handleSubmit = async e => {
-    e.preventDefault()
     try {
       await authService.signup(formData)
       props.handleSignupOrLogin()
@@ -55,7 +56,7 @@ const Signup = props => {
   }
 
   const isFormInvalid = () => {
-    return !(name && email && password && password === passwordConf)
+    return !(name && email && location && password && password === passwordConf)
   }
 
   return (
@@ -120,6 +121,20 @@ const Signup = props => {
             type="password"
             name="passwordConf"
             value={passwordConf}
+            onChange={handleChange}
+            autoComplete="off"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="standard-required"
+            label="City"
+            helperText="City"
+            type="text"
+            name="location"
+            value={location}
             onChange={handleChange}
             autoComplete="off"
             fullWidth

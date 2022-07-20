@@ -15,42 +15,38 @@ import './weather.css'
 
 const Weather = (props) => {
 
-  const getLocationInfo = async () => {
 
-    if (props.user?.weather) {
-      return await weatherService.getPref()
-    } else if (weatherService.getLocationLocalStorage()) {
-      return weatherService.getLocationLocalStorage()
-    } else {
-      return 'Boston'
+  const getLocationDetails = async () => {
+    try {
+      locationService.getLocation()
+        .then(location => {
+          weatherService.getWeatherDetails(location)
+            .then(details => {
+              setWeather(details)
+            })
+        })
+    } catch (error) {
+      console.log(error)
     }
   }
 
-  const getDisplayPref = async () => {
-
-    if (props.user) {
-      const pref = await weatherService.getPref()
-      return pref.display
-    } else {
-      return 'today'
-    }
-
+  const getWeatherDisplayDetails = async () => {
+    const weatherDisplayDetail = await weatherService.getWeatherPref()
+    setWeatherDisplay(weatherDisplayDetail)
   }
 
-  const [searchLocation, setSearchLocation] = useState('boston')
-  const [displayPref, setDisplayPref] = useState(/*getDisplayPref()*/)
+  const [searchLocation, setSearchLocation] = useState(getLocationDetails)
+  const [weatherDisplay, setWeatherDisplay] = useState(getWeatherDisplayDetails)
   const [weather, setWeather] = useState({})
 
-  // const [preference, setPreference] = useState(weatherService.getPref())
-
   useEffect(() => {
-    
     const fetchWeatherDetails = async () => {
-      const weatherDetails = await weatherService.getWeatherDetails(searchLocation)
+      const weatherDetails =  await weatherService.getWeatherDetails(searchLocation)
       setWeather(weatherDetails)
     }
     fetchWeatherDetails()
-  }, [searchLocation])
+
+  }, [props.user,searchLocation])
 
   const handleSearchLocation = (formData) => {
     setSearchLocation(formData.query)
@@ -62,7 +58,7 @@ const Weather = (props) => {
         <WeatherNav className='weather-nav' weather={weather} handleSearchLocation={handleSearchLocation} />
         <div className='weather-body'>
           <WeatherGraph className='weather-graph' weather={weather} />
-          <WeatherDisplay className='weather-display' weather={weather} displayPref={displayPref} />
+          <WeatherDisplay className='weather-display' weather={weather} weatherDisplay={weatherDisplay} />
         </div>
       </div>
     </>
