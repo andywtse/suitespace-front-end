@@ -2,17 +2,16 @@
 
 
 .news-container {
-  /* Dimensions */
   flex-wrap: wrap;
-  width: 400px;
-  height: 400px;
-  /* Glass Morphism */
+  width: 600px;
+  height: 500px;
+
   background: rgba(255, 255, 255, 0.045);
   backdrop-filter: blur( 8px );
   -webkit-backdrop-filter: blur( 8px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-  /* Font */
+
   font-family: 'Sora', sans-serif;
   text-align: center;
   font-weight: 300;
@@ -20,26 +19,68 @@
   color: #f2d3ab;
   --calendar-today-dark-blue: #35445d;
   --calendar-selected-dark-blue: rgba(53, 68, 93, 0.5);
-  padding: .5em;
-  overflow: scroll;
+  padding: 0em 1em;
+}
+
+.news-title {
+  font-weight: 400;
+}
+
+.news-nav {
+  height: 15%;
 }
 
 .news-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
   padding-right: .5em;
+  height: 85%;
+  overflow-y: scroll;
   padding-bottom: 1em;
+}
+
+.MuiCardMedia-root {
+  border: 2px solid var(--soft-yellow);
+}
+
+.css-1oqv2c0-MuiPaper-root-MuiCard-root {
+  background: rgba(211, 211, 211, 0.222) !important;
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+}
+
+.css-1oqv2c0-MuiPaper-root-MuiCard-root * {
+  color: var(--soft-yellow);
 }
 
 .news-card {
-  padding-right: .5em;
-  padding-bottom: 1em;
+  
+}
+
+.news-card-container {
+  padding-inline: 1em;
+  padding-block: .5em;
+  text-align: start !important;
+}
+
+.news-card-header {
+  padding-top: .5em;
+}
+
+.news-card-description {
+  color: white !important;
+  display: flex !important;
+  justify-content: start !important;
+  text-align: start !important;
 }
 
 .news-button {
-  background-color: #ffffff18;
+  background-color: rgba(53, 68, 93, 0.5);
   transition: .5s;
 }
 
 .news-button:hover {
-  background-color: #35445d6d;
+  background-color: rgba(53, 68, 93, 0.75);
   transition: .5s;
 }

@@ -45,9 +45,9 @@ const Login = props => {
 
   return(
     <div>
-      <Button variant="outlined" onClick={handleOpen}>
+      <button className='nav-button | flex justify-center items-center text-base rounded px-5 py-1' onClick={handleOpen}>
         Log In
-      </Button>
+      </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Log In</DialogTitle>
         <DialogContentText>

@@ -6,33 +6,30 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import './NewsCard.css'
 
-
-
-
-
 export default function NewsCard(props) {
   return (
     <Card sx={{ display: 'flex' }}>
       <CardMedia
-      component="img"
-      sx={{ width: 100 }}
-      image={props.news.urlToImage}
-      alt="News image"
+        component="img"
+        sx={{ width: 125 }}
+        image={props.news.urlToImage ? props.news.urlToImage : 'https://i.imgur.com/QoMTW46.jpg' }
+        alt="News image"
       />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography sx={{ mb: 1.5 }} color="black">
-        {props.news.title.split(" ").splice(0,8).join(" ")}...
-        </Typography>
-        <Typography sx={{ mb: 1.5, fontSize: 10 }} variant="body2" color="text.secondary" component="div">
-          {props.news.description.split(" ").splice(0,20).join(" ")}...
-        </Typography>
-        <Button>
-          <a target="_blank" href={props.news.url}>
+      <div className='news-card-container | flex flex-col justify-start items-start gap-2 '>
+        <div className='news-card-header | text-xl'>
+          {props.news.title
+            .split(".").splice(0, 1).join(" ")
+          }
+        </div>
+        <div className='news-card-description | flex justify-start'>
+          {props.news.description.split(".").splice(0 , 1).join(" ")}
+        </div>
+        <a target="_blank" href={props.news.url}>
+          <button className='news-button | flex justify-center items-center text-base rounded px-5 py-1 '>
             Learn More
-          </a>
-        </Button>
-      </Box>   
+          </button>
+        </a>
+      </div>   
     </Card>
-       
   );
 }

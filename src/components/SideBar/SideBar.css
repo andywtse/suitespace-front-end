@@ -1,8 +1,12 @@
+/** Sidebar */
+
 .sidebar-container {
   position: fixed;
   right: 0;
   top: 0; 
-  width: 450px;
+
+  width: 450px; /*! RESPONSIVE  */
+
   background: rgba(255, 255, 255, 0.111);
   backdrop-filter: blur( 9px );
   -webkit-backdrop-filter: blur( 9px );
@@ -11,19 +15,16 @@
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.widget-header {
-  padding-top: 3em;
-  padding-inline: .75em;
-  color: var(--soft-yellow);
-}
+/** Sidebar Toggle Button */
 
 .toggle-sidebar {
   top: 0;
   left: 0;
-  margin: .5em;
-
+  
   height: 40px;
   width: 40px;
+  
+  margin: 1em .5em;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.109);
   color: var(--soft-yellow);
@@ -49,5 +50,12 @@
   border-radius: 20px;
   padding: .5em;
   transition: .2s;
-  
+}
+
+/** Sidebar Widget Header */
+
+.widget-header {
+  padding-top: 3em;
+  padding-inline: .75em;
+  color: var(--soft-yellow);
 }

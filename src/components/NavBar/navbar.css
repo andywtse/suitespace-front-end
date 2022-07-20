@@ -1,14 +1,18 @@
 nav {
-  display: flex;
-  flex-direction: row;
-  margin: 2rem 0 1rem 0;
+  height: 10vh;
+  color: var(--soft-yellow);
 }
 
-nav > ul {
-  display: flex;
-  flex-direction: row;
+.nav-username {
+  
 }
 
-li {
-  margin: 0 1rem;
+.nav-button {
+  background-color: #ffffff18;
+  transition: .5s;
+}
+
+.nav-button:hover {
+  background-color: #6376966d;
+  transition: .5s;
 }

@@ -66,12 +66,15 @@ const App = () => {
         <span className='sidebar-tooltip | group-hover:scale-100 scale-0'>Open Sidebar</span>
       </div>
       <FavoriteBar />
-      <div className='app-layout-container'>
-        <NewsFeed />
-        <Todolist user={user} />
-        <div className="break"></div>
-        <Weather user={user} />
-      </div>
+      <main className='app-layout-container | flex flex-wrap justify-between'>
+        <section className='w-full flex gap-14'>
+          <NewsFeed />
+          <Todolist user={user} />
+        </section>
+        <section>
+          <Weather user={user} />
+        </section>
+      </main>
     </>
   )
 }

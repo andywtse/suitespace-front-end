@@ -8,12 +8,16 @@
   font-weight: 300;
 }
 
+.scheduler-header {
+  /* Empty */
+}
+
 .MuiBackdrop-root {
   opacity: .25 !important;
 }
 
 .form-header {
-
+  /* Empty */
 }
 
 label {
@@ -71,6 +75,7 @@ input:focus {
 .schedule-items-container {
   height: 65%;
   padding-block: 1em;
+  padding-right: .5em;
 }
 
 ::-webkit-scrollbar {
@@ -80,11 +85,21 @@ input:focus {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: #ffffff76;
+  background-color: #fffbfb76;
 }
 
 .schedule-item {
   height: fit-content;
+  border-radius: 10px;
+  padding: 1em;
+  transition: .5s;
+}
+
+.schedule-item:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  transition: .5s;
+  
 }
 
 .schedule-item-time {

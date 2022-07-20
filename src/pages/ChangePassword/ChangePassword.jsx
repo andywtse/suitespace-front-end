@@ -58,9 +58,9 @@ const ChangePassword = props => {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleOpen}>
+      <button onClick={handleOpen} className='nav-button | flex justify-center items-center text-base rounded px-5 py-1'>
         Change Password
-      </Button>
+      </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Change Password</DialogTitle>
         <DialogContentText>

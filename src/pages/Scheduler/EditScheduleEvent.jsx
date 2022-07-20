@@ -1,7 +1,7 @@
 //* React Hooks *//
 import { useState, useRef, useEffect } from 'react'
 
-const AddScheduleItem = ({ date, handleAddEvent }) => {
+const EditScheduleEvent = ({ date, handleUpdateEvent }) => {
   //* State *//
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
@@ -21,13 +21,16 @@ const AddScheduleItem = ({ date, handleAddEvent }) => {
   }, [formData])
   
   //* Functions *//
-  const handleChange = evt => setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  function handleChange(evt) {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+    
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-    handleAddEvent(formData)
+    handleUpdateEvent(formData)
 	}
-  
+
   return (
     <>
       <form ref={formElement} className="flex flex-col gap-6 pt-4" onSubmit={handleSubmit}>
@@ -84,7 +87,7 @@ const AddScheduleItem = ({ date, handleAddEvent }) => {
           />
           <p className="opacity-70 text-sm">Example: Remote</p>
         </div>
-        <input type="text" hidden name="date" value={formData.date = date.format('MMMM DD YYYY')} />
+        <input type="text" hidden name="date" defaultValue={formData.date = date.format('MMMM DD YYYY')} />
         <button onClick={() => handleSubmit()}>
           SUBMIT
         </button>
@@ -93,4 +96,4 @@ const AddScheduleItem = ({ date, handleAddEvent }) => {
   )
 }
 
-export default AddScheduleItem
+export default EditScheduleEvent

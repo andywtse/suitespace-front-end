@@ -50,32 +50,34 @@ const NewsFeed = (props) => {
   return (
     <>
       <div className="news-container">
-        <div className="news-nav"> 
+        <div className="news-nav | flex justify-between items-center">
+          <h1 className='news-title | text-xl'>News Feed</h1> 
           <form 
           autoComplete="off" 
           onSubmit={handleSubmit}
           >
             <input 
-            type="text"
-            name="search"
-            placeholder='Search News'
-            value={search}
-            onChange={handleChange}
-            className='news-button'
-            required
+              type="text"
+              name="search"
+              placeholder='Search News'
+              value={search}
+              onChange={handleChange}
+              className='news-button'
+              required
             />
             <button 
-            type="submit" 
-            disabled={isFormInvalid()}
+              type="submit" 
+              disabled={isFormInvalid()}
+              className="ml-1"
             >
               <SearchIcon/>
             </button>
           </form>
         </div>
         <div className='news-body'>
-          {newsData.map(news =>
-          <div className='news-card' key={news.title}>
-            <NewsCard news={news}/>
+          {newsData.map((news, idx) =>
+          <div className='news-card |' key={idx}>
+            <NewsCard news={news} />
           </div> 
           )}
         </div>
