@@ -27,7 +27,7 @@ function EditTodo(props) {
           <input className='input-item'
             name='dueDate'
             type='date'
-            // value={formData.dueDate}
+            value={formData.dueDate}
             onChange={handleChange}
             required
           />

@@ -21,11 +21,13 @@ const TodoList = (props) => {
   const handleAddTodo = async newTodoData => {
     const newTodo = await todoService.create(newTodoData)
     setTodos([...todos, newTodo])
+    handleClose()
   }
 
   const handleDeleteTodo = async id => {
     const deletedTodo = await todoService.deleteTodo(id)
     setTodos(todos.filter(todo => todo._id !== deletedTodo._id))
+    handleClose()
   }
 
   const handleUpdateTodo = async updatedTodoFormData => {
@@ -34,6 +36,7 @@ const TodoList = (props) => {
       todo._id === updatedTodo._id ? updatedTodo : todo
     )
     setTodos([...newTodosArray])
+    handleClose()
   }
 
   const [open, setOpen] = useState(false);
