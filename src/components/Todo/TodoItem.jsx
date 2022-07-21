@@ -23,7 +23,7 @@ const TodoItem = (props) => {
 
 	return (
 		<>
-			{props.user?.profile === props.todo.owner._id && 
+			{props.user?.profile === props.todo.owner && 
       	<div className='todo-item' onClick={handleOpen}>
 					<input type="checkbox" />
 					<div className='todo-item-content'>
